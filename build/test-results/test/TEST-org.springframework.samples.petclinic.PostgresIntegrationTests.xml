@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.springframework.samples.petclinic.PostgresIntegrationTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-07-26T04:47:30" hostname="dhar.lan" time="0.049">
+  <properties/>
+  <testcase name="testFindAll()" classname="org.springframework.samples.petclinic.PostgresIntegrationTests" time="0.013"/>
+  <testcase name="testOwnerDetails()" classname="org.springframework.samples.petclinic.PostgresIntegrationTests" time="0.036"/>
+  <system-out><![CDATA[2023-07-25T21:47:08.363-07:00  INFO 60024 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.springframework.samples.petclinic.PostgresIntegrationTests]: PostgresIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-07-25T21:47:08.365-07:00  INFO 60024 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.springframework.samples.petclinic.PetClinicApplication for test class org.springframework.samples.petclinic.PostgresIntegrationTests
+
+
+              |\      _,,,--,,_
+             /,`.-'`'   ._  \-;;,_
+  _______ __|,4-  ) )_   .;.(__`'-'__     ___ __    _ ___ _______
+ |       | '---''(_/._)-'(_\_)   |   |   |   |  |  | |   |       |
+ |    _  |    ___|_     _|       |   |   |   |   |_| |   |       | __ _ _
+ |   |_| |   |___  |   | |       |   |   |   |       |   |       | \ \ \ \
+ |    ___|    ___| |   | |      _|   |___|   |  _    |   |      _|  \ \ \ \
+ |   |   |   |___  |   | |     |_|       |   | | |   |   |     |_    ) ) ) )
+ |___|   |_______| |___| |_______|_______|___|_|  |__|___|_______|  / / / /
+ ==================================================================/_/_/_/
+
+:: Built with Spring Boot :: 3.1.1
+
+
+2023-07-25T21:47:08.379-07:00  INFO 60024 --- [    Test worker] o.s.s.p.PostgresIntegrationTests         : Starting PostgresIntegrationTests using Java 17.0.8 with PID 60024 (started by vidyadhar in /Users/vidyadhar/Downloads/spring-petclinic)
+2023-07-25T21:47:08.379-07:00  INFO 60024 --- [    Test worker] o.s.s.p.PostgresIntegrationTests         : The following 1 profile is active: "postgres"
+2023-07-25T21:47:08.383-07:00  INFO 60024 --- [    Test worker] .s.b.d.c.l.DockerComposeLifecycleManager : Using Docker Compose file '/Users/vidyadhar/Downloads/spring-petclinic/docker-compose.yml'
+2023-07-25T21:47:08.960-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  postgres Pulling 
+2023-07-25T21:47:10.867-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Pulling fs layer 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4a34531fd37c Pulling fs layer 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Pulling fs layer 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Pulling fs layer 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Pulling fs layer 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  61984e227719 Pulling fs layer 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  256f8d08a12a Pulling fs layer 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  668617f978f9 Pulling fs layer 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Pulling fs layer 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3afc17d44dc1 Pulling fs layer 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  67853dbbcaf9 Pulling fs layer 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6f90a3ca5d64 Pulling fs layer 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e3ebe1761852 Pulling fs layer 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Waiting 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Waiting 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  61984e227719 Waiting 
+2023-07-25T21:47:10.868-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  256f8d08a12a Waiting 
+2023-07-25T21:47:10.869-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  668617f978f9 Waiting 
+2023-07-25T21:47:10.869-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Waiting 
+2023-07-25T21:47:10.869-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3afc17d44dc1 Waiting 
+2023-07-25T21:47:10.869-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  67853dbbcaf9 Waiting 
+2023-07-25T21:47:10.869-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6f90a3ca5d64 Waiting 
+2023-07-25T21:47:10.869-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e3ebe1761852 Waiting 
+2023-07-25T21:47:11.400-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4a34531fd37c Downloading [=============================>                     ]     719B/1.21kB
+2023-07-25T21:47:11.400-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4a34531fd37c Downloading [==================================================>]   1.21kB/1.21kB
+2023-07-25T21:47:11.400-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4a34531fd37c Verifying Checksum 
+2023-07-25T21:47:11.400-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4a34531fd37c Download complete 
+2023-07-25T21:47:11.406-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Downloading [>                                                  ]  46.46kB/4.578MB
+2023-07-25T21:47:11.520-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [>                                                  ]  294.9kB/29.15MB
+2023-07-25T21:47:11.524-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Downloading [===>                                               ]  344.1kB/4.578MB
+2023-07-25T21:47:11.624-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Downloading [========>                                          ]  785.7kB/4.578MB
+2023-07-25T21:47:11.635-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [=>                                                 ]  896.2kB/29.15MB
+2023-07-25T21:47:11.741-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [===>                                               ]  1.788MB/29.15MB
+2023-07-25T21:47:11.747-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Downloading [============>                                      ]  1.179MB/4.578MB
+2023-07-25T21:47:11.857-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [====>                                              ]  2.685MB/29.15MB
+2023-07-25T21:47:11.882-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Downloading [=================>                                 ]  1.633MB/4.578MB
+2023-07-25T21:47:11.967-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [======>                                            ]  3.582MB/29.15MB
+2023-07-25T21:47:11.995-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Downloading [=======================>                           ]  2.124MB/4.578MB
+2023-07-25T21:47:12.103-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [=======>                                           ]  4.483MB/29.15MB
+2023-07-25T21:47:12.187-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Downloading [>                                                  ]  15.06kB/1.377MB
+2023-07-25T21:47:12.231-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [========>                                          ]  4.778MB/29.15MB
+2023-07-25T21:47:12.239-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Downloading [===============================>                   ]  2.861MB/4.578MB
+2023-07-25T21:47:12.312-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Downloading [===>                                               ]  90.91kB/1.377MB
+2023-07-25T21:47:12.341-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Downloading [====================================>              ]  3.353MB/4.578MB
+2023-07-25T21:47:12.358-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [===========>                                       ]  6.548MB/29.15MB
+2023-07-25T21:47:12.442-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Downloading [=========================================>         ]  3.795MB/4.578MB
+2023-07-25T21:47:12.459-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [============>                                      ]  7.433MB/29.15MB
+2023-07-25T21:47:12.462-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Downloading [======>                                            ]  189.2kB/1.377MB
+2023-07-25T21:47:12.572-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [==============>                                    ]  8.321MB/29.15MB
+2023-07-25T21:47:12.604-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Downloading [===========>                                       ]  311.3kB/1.377MB
+2023-07-25T21:47:12.640-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Downloading [===============================================>   ]  4.385MB/4.578MB
+2023-07-25T21:47:12.712-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Downloading [===============>                                   ]    426kB/1.377MB
+2023-07-25T21:47:12.816-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [===============>                                   ]  8.911MB/29.15MB
+2023-07-25T21:47:12.823-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Downloading [=================>                                 ]  470.3kB/1.377MB
+2023-07-25T21:47:12.871-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Download complete 
+2023-07-25T21:47:12.953-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Downloading [========================>                          ]  666.9kB/1.377MB
+2023-07-25T21:47:13.012-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [==================>                                ]  10.98MB/29.15MB
+2023-07-25T21:47:13.068-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Downloading [=============================>                     ]  814.3kB/1.377MB
+2023-07-25T21:47:13.167-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [=====================>                             ]  12.75MB/29.15MB
+2023-07-25T21:47:13.182-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Downloading [==================================>                ]  945.4kB/1.377MB
+2023-07-25T21:47:13.352-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [=======================>                           ]  13.94MB/29.15MB
+2023-07-25T21:47:13.353-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Downloading [=====================================>             ]  1.044MB/1.377MB
+2023-07-25T21:47:13.475-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Downloading [=============================================>     ]   1.24MB/1.377MB
+2023-07-25T21:47:13.521-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [==========================>                        ]  15.43MB/29.15MB
+2023-07-25T21:47:13.578-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Downloading [=================================================> ]  1.355MB/1.377MB
+2023-07-25T21:47:13.579-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Verifying Checksum 
+2023-07-25T21:47:13.579-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Download complete 
+2023-07-25T21:47:13.643-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [==============================>                    ]   17.5MB/29.15MB
+2023-07-25T21:47:13.698-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Downloading [>                                                  ]  81.73kB/8.065MB
+2023-07-25T21:47:13.773-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [===============================>                   ]  18.09MB/29.15MB
+2023-07-25T21:47:13.816-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Downloading [=>                                                 ]    245kB/8.065MB
+2023-07-25T21:47:13.898-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [================================>                  ]  18.98MB/29.15MB
+2023-07-25T21:47:13.931-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Downloading [===>                                               ]    498kB/8.065MB
+2023-07-25T21:47:14.036-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [===================================>               ]  20.47MB/29.15MB
+2023-07-25T21:47:14.075-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Downloading [=====>                                             ]  907.6kB/8.065MB
+2023-07-25T21:47:14.175-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Downloading [=========>                                         ]  1.493MB/8.065MB
+2023-07-25T21:47:14.230-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [======================================>            ]  22.24MB/29.15MB
+2023-07-25T21:47:14.299-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Downloading [==============>                                    ]  2.333MB/8.065MB
+2023-07-25T21:47:14.338-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [========================================>          ]  23.44MB/29.15MB
+2023-07-25T21:47:14.407-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Downloading [==================>                                ]  2.988MB/8.065MB
+2023-07-25T21:47:14.456-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  61984e227719 Downloading [>                                                  ]  13.69kB/1.318MB
+2023-07-25T21:47:14.464-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [=========================================>         ]  24.32MB/29.15MB
+2023-07-25T21:47:14.603-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [===========================================>       ]  25.21MB/29.15MB
+2023-07-25T21:47:14.625-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  61984e227719 Downloading [==>                                                ]  54.67kB/1.318MB
+2023-07-25T21:47:14.627-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Downloading [====================>                              ]  3.234MB/8.065MB
+2023-07-25T21:47:14.773-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [===========================================>       ]  25.51MB/29.15MB
+2023-07-25T21:47:14.824-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Downloading [============================>                      ]  4.631MB/8.065MB
+2023-07-25T21:47:14.835-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  61984e227719 Downloading [===>                                               ]  102.5kB/1.318MB
+2023-07-25T21:47:14.927-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Downloading [==================================>                ]  5.548MB/8.065MB
+2023-07-25T21:47:14.993-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [============================================>      ]   26.1MB/29.15MB
+2023-07-25T21:47:14.997-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  61984e227719 Downloading [========>                                          ]  217.8kB/1.318MB
+2023-07-25T21:47:15.096-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Downloading [=======================================>           ]  6.368MB/8.065MB
+2023-07-25T21:47:15.102-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [===============================================>   ]  27.57MB/29.15MB
+2023-07-25T21:47:15.116-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  61984e227719 Downloading [==========>                                        ]  278.5kB/1.318MB
+2023-07-25T21:47:15.178-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Verifying Checksum 
+2023-07-25T21:47:15.179-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Download complete 
+2023-07-25T21:47:15.206-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Downloading [=================================================> ]  28.75MB/29.15MB
+2023-07-25T21:47:15.209-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Download complete 
+2023-07-25T21:47:15.223-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  61984e227719 Downloading [==================>                                ]  491.5kB/1.318MB
+2023-07-25T21:47:15.238-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Extracting [>                                                  ]  294.9kB/29.15MB
+2023-07-25T21:47:15.324-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  61984e227719 Downloading [=========================================>         ]  1.104MB/1.318MB
+2023-07-25T21:47:15.337-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  61984e227719 Verifying Checksum 
+2023-07-25T21:47:15.337-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  61984e227719 Download complete 
+2023-07-25T21:47:15.338-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Extracting [===========>                                       ]  6.488MB/29.15MB
+2023-07-25T21:47:15.440-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Extracting [=================>                                 ]  10.32MB/29.15MB
+2023-07-25T21:47:15.543-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Extracting [==========================>                        ]  15.34MB/29.15MB
+2023-07-25T21:47:15.596-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  256f8d08a12a Downloading [==================================================>]     149B/149B
+2023-07-25T21:47:15.597-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  256f8d08a12a Verifying Checksum 
+2023-07-25T21:47:15.597-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  256f8d08a12a Download complete 
+2023-07-25T21:47:15.623-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  668617f978f9 Downloading [===========>                                       ]     719B/3.199kB
+2023-07-25T21:47:15.624-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  668617f978f9 Downloading [==================================================>]  3.199kB/3.199kB
+2023-07-25T21:47:15.624-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  668617f978f9 Verifying Checksum 
+2023-07-25T21:47:15.624-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  668617f978f9 Download complete 
+2023-07-25T21:47:15.644-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Extracting [=======================================>           ]   23.3MB/29.15MB
+2023-07-25T21:47:15.782-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Extracting [=========================================>         ]  24.18MB/29.15MB
+2023-07-25T21:47:15.884-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [>                                                  ]  540.7kB/102.3MB
+2023-07-25T21:47:15.920-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Extracting [===============================================>   ]  27.72MB/29.15MB
+2023-07-25T21:47:16.027-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [>                                                  ]  1.612MB/102.3MB
+2023-07-25T21:47:16.116-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3afc17d44dc1 Downloading [=======>                                           ]  1.369kB/9.774kB
+2023-07-25T21:47:16.116-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3afc17d44dc1 Downloading [==================================================>]  9.774kB/9.774kB
+2023-07-25T21:47:16.116-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3afc17d44dc1 Verifying Checksum 
+2023-07-25T21:47:16.117-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3afc17d44dc1 Download complete 
+2023-07-25T21:47:16.164-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Extracting [================================================>  ]  28.31MB/29.15MB
+2023-07-25T21:47:16.174-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  67853dbbcaf9 Downloading [==================================================>]     130B/130B
+2023-07-25T21:47:16.175-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  67853dbbcaf9 Verifying Checksum 
+2023-07-25T21:47:16.175-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  67853dbbcaf9 Download complete 
+2023-07-25T21:47:16.175-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=>                                                 ]  2.681MB/102.3MB
+2023-07-25T21:47:16.282-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Extracting [==================================================>]  29.15MB/29.15MB
+2023-07-25T21:47:16.301-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=>                                                 ]  3.746MB/102.3MB
+2023-07-25T21:47:16.325-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3ae0c06b4d3a Pull complete 
+2023-07-25T21:47:16.328-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4a34531fd37c Extracting [==================================================>]   1.21kB/1.21kB
+2023-07-25T21:47:16.328-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4a34531fd37c Extracting [==================================================>]   1.21kB/1.21kB
+2023-07-25T21:47:16.336-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  4a34531fd37c Pull complete 
+2023-07-25T21:47:16.340-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Extracting [>                                                  ]  65.54kB/4.578MB
+2023-07-25T21:47:16.406-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Extracting [==================================================>]  4.578MB/4.578MB
+2023-07-25T21:47:16.407-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Extracting [==================================================>]  4.578MB/4.578MB
+2023-07-25T21:47:16.415-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [==>                                                ]  4.827MB/102.3MB
+2023-07-25T21:47:16.443-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  529fb828a0d2 Pull complete 
+2023-07-25T21:47:16.444-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Extracting [=>                                                 ]  32.77kB/1.377MB
+2023-07-25T21:47:16.461-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Extracting [==================================================>]  1.377MB/1.377MB
+2023-07-25T21:47:16.471-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  f6d51e9f7486 Pull complete 
+2023-07-25T21:47:16.473-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Extracting [>                                                  ]   98.3kB/8.065MB
+2023-07-25T21:47:16.584-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [===>                                               ]  6.449MB/102.3MB
+2023-07-25T21:47:16.585-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Extracting [=============================>                     ]  4.719MB/8.065MB
+2023-07-25T21:47:16.687-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Extracting [========================================>          ]  6.488MB/8.065MB
+2023-07-25T21:47:16.687-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6f90a3ca5d64 Downloading [==================================================>]     198B/198B
+2023-07-25T21:47:16.687-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6f90a3ca5d64 Verifying Checksum 
+2023-07-25T21:47:16.687-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6f90a3ca5d64 Download complete 
+2023-07-25T21:47:16.702-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [===>                                               ]  7.527MB/102.3MB
+2023-07-25T21:47:16.723-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Extracting [==================================================>]  8.065MB/8.065MB
+2023-07-25T21:47:16.739-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  bfc215549fcc Pull complete 
+2023-07-25T21:47:16.741-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  61984e227719 Extracting [=>                                                 ]  32.77kB/1.318MB
+2023-07-25T21:47:16.768-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  61984e227719 Extracting [==================================================>]  1.318MB/1.318MB
+2023-07-25T21:47:16.786-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  61984e227719 Pull complete 
+2023-07-25T21:47:16.786-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e3ebe1761852 Downloading [=======>                                           ]     719B/4.784kB
+2023-07-25T21:47:16.788-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e3ebe1761852 Downloading [==================================================>]  4.784kB/4.784kB
+2023-07-25T21:47:16.788-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e3ebe1761852 Verifying Checksum 
+2023-07-25T21:47:16.788-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e3ebe1761852 Download complete 
+2023-07-25T21:47:16.788-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  256f8d08a12a Extracting [==================================================>]     149B/149B
+2023-07-25T21:47:16.788-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  256f8d08a12a Extracting [==================================================>]     149B/149B
+2023-07-25T21:47:16.794-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  256f8d08a12a Pull complete 
+2023-07-25T21:47:16.796-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  668617f978f9 Extracting [==================================================>]  3.199kB/3.199kB
+2023-07-25T21:47:16.798-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  668617f978f9 Extracting [==================================================>]  3.199kB/3.199kB
+2023-07-25T21:47:16.802-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  668617f978f9 Pull complete 
+2023-07-25T21:47:16.843-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [====>                                              ]  8.604MB/102.3MB
+2023-07-25T21:47:16.965-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [====>                                              ]  9.685MB/102.3MB
+2023-07-25T21:47:17.069-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=====>                                             ]  10.76MB/102.3MB
+2023-07-25T21:47:17.185-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [======>                                            ]  12.38MB/102.3MB
+2023-07-25T21:47:17.321-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [======>                                            ]  12.92MB/102.3MB
+2023-07-25T21:47:17.436-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [======>                                            ]     14MB/102.3MB
+2023-07-25T21:47:17.551-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=======>                                           ]  16.15MB/102.3MB
+2023-07-25T21:47:17.671-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [========>                                          ]  16.68MB/102.3MB
+2023-07-25T21:47:17.786-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [========>                                          ]   18.3MB/102.3MB
+2023-07-25T21:47:17.909-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=========>                                         ]  18.84MB/102.3MB
+2023-07-25T21:47:18.095-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [==========>                                        ]  20.97MB/102.3MB
+2023-07-25T21:47:18.219-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [===========>                                       ]  23.14MB/102.3MB
+2023-07-25T21:47:18.396-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [============>                                      ]  24.75MB/102.3MB
+2023-07-25T21:47:18.539-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=============>                                     ]   26.9MB/102.3MB
+2023-07-25T21:47:18.724-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=============>                                     ]  27.44MB/102.3MB
+2023-07-25T21:47:18.961-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [==============>                                    ]  29.06MB/102.3MB
+2023-07-25T21:47:19.129-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [===============>                                   ]   31.2MB/102.3MB
+2023-07-25T21:47:19.233-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [===============>                                   ]  31.73MB/102.3MB
+2023-07-25T21:47:19.428-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [================>                                  ]  34.43MB/102.3MB
+2023-07-25T21:47:19.533-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=================>                                 ]  36.05MB/102.3MB
+2023-07-25T21:47:19.739-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [==================>                                ]  37.12MB/102.3MB
+2023-07-25T21:47:19.955-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [===================>                               ]  39.27MB/102.3MB
+2023-07-25T21:47:20.158-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [====================>                              ]  41.43MB/102.3MB
+2023-07-25T21:47:20.340-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=====================>                             ]  43.05MB/102.3MB
+2023-07-25T21:47:20.612-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [======================>                            ]  45.21MB/102.3MB
+2023-07-25T21:47:20.844-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=======================>                           ]   47.9MB/102.3MB
+2023-07-25T21:47:20.963-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [========================>                          ]  49.51MB/102.3MB
+2023-07-25T21:47:21.064-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [========================>                          ]  50.59MB/102.3MB
+2023-07-25T21:47:21.220-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=========================>                         ]  52.19MB/102.3MB
+2023-07-25T21:47:21.334-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [==========================>                        ]  54.88MB/102.3MB
+2023-07-25T21:47:21.473-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [===========================>                       ]   56.5MB/102.3MB
+2023-07-25T21:47:21.606-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [============================>                      ]  57.58MB/102.3MB
+2023-07-25T21:47:21.708-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [============================>                      ]   59.2MB/102.3MB
+2023-07-25T21:47:21.844-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=============================>                     ]  60.28MB/102.3MB
+2023-07-25T21:47:22.008-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=============================>                     ]  60.82MB/102.3MB
+2023-07-25T21:47:22.169-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [==============================>                    ]  62.97MB/102.3MB
+2023-07-25T21:47:22.398-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [================================>                  ]  65.66MB/102.3MB
+2023-07-25T21:47:22.569-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [================================>                  ]  67.28MB/102.3MB
+2023-07-25T21:47:22.855-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [==================================>                ]  69.98MB/102.3MB
+2023-07-25T21:47:23.139-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [===================================>               ]   73.2MB/102.3MB
+2023-07-25T21:47:23.269-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=====================================>             ]  76.96MB/102.3MB
+2023-07-25T21:47:23.454-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=====================================>             ]   77.5MB/102.3MB
+2023-07-25T21:47:23.564-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [======================================>            ]  78.58MB/102.3MB
+2023-07-25T21:47:23.755-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=======================================>           ]  80.72MB/102.3MB
+2023-07-25T21:47:23.870-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=========================================>         ]  83.96MB/102.3MB
+2023-07-25T21:47:24.082-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=========================================>         ]   84.5MB/102.3MB
+2023-07-25T21:47:24.193-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [==========================================>        ]  86.12MB/102.3MB
+2023-07-25T21:47:24.385-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [===========================================>       ]   88.8MB/102.3MB
+2023-07-25T21:47:24.576-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [============================================>      ]  90.96MB/102.3MB
+2023-07-25T21:47:24.677-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [=============================================>     ]  93.12MB/102.3MB
+2023-07-25T21:47:24.947-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [==============================================>    ]  94.74MB/102.3MB
+2023-07-25T21:47:25.048-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [===============================================>   ]  96.88MB/102.3MB
+2023-07-25T21:47:25.180-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [================================================>  ]  99.04MB/102.3MB
+2023-07-25T21:47:25.392-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [================================================>  ]  100.1MB/102.3MB
+2023-07-25T21:47:25.449-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Downloading [==================================================>]  102.3MB/102.3MB
+2023-07-25T21:47:25.450-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Verifying Checksum 
+2023-07-25T21:47:25.450-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Download complete 
+2023-07-25T21:47:25.491-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [>                                                  ]  557.1kB/102.3MB
+2023-07-25T21:47:25.594-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [====>                                              ]   9.47MB/102.3MB
+2023-07-25T21:47:25.697-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [==========>                                        ]  22.28MB/102.3MB
+2023-07-25T21:47:25.798-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [==============>                                    ]  29.52MB/102.3MB
+2023-07-25T21:47:25.899-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [==================>                                ]  38.44MB/102.3MB
+2023-07-25T21:47:26.003-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [========================>                          ]  50.14MB/102.3MB
+2023-07-25T21:47:26.108-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [==============================>                    ]  61.83MB/102.3MB
+2023-07-25T21:47:26.210-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [================================>                  ]  66.29MB/102.3MB
+2023-07-25T21:47:26.311-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [==================================>                ]  70.75MB/102.3MB
+2023-07-25T21:47:26.412-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [=====================================>             ]  77.43MB/102.3MB
+2023-07-25T21:47:26.520-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [========================================>          ]  83.56MB/102.3MB
+2023-07-25T21:47:26.636-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [============================================>      ]  90.24MB/102.3MB
+2023-07-25T21:47:26.749-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [==============================================>    ]   94.7MB/102.3MB
+2023-07-25T21:47:26.866-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [===============================================>   ]  97.48MB/102.3MB
+2023-07-25T21:47:26.985-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [================================================>  ]  99.16MB/102.3MB
+2023-07-25T21:47:27.217-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [=================================================> ]  100.8MB/102.3MB
+2023-07-25T21:47:27.329-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Extracting [==================================================>]  102.3MB/102.3MB
+2023-07-25T21:47:27.523-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  ad076e900451 Pull complete 
+2023-07-25T21:47:27.527-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3afc17d44dc1 Extracting [==================================================>]  9.774kB/9.774kB
+2023-07-25T21:47:27.528-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3afc17d44dc1 Extracting [==================================================>]  9.774kB/9.774kB
+2023-07-25T21:47:27.535-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  3afc17d44dc1 Pull complete 
+2023-07-25T21:47:27.537-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  67853dbbcaf9 Extracting [==================================================>]     130B/130B
+2023-07-25T21:47:27.537-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  67853dbbcaf9 Extracting [==================================================>]     130B/130B
+2023-07-25T21:47:27.543-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  67853dbbcaf9 Pull complete 
+2023-07-25T21:47:27.544-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6f90a3ca5d64 Extracting [==================================================>]     198B/198B
+2023-07-25T21:47:27.546-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6f90a3ca5d64 Extracting [==================================================>]     198B/198B
+2023-07-25T21:47:27.549-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  6f90a3ca5d64 Pull complete 
+2023-07-25T21:47:27.552-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e3ebe1761852 Extracting [==================================================>]  4.784kB/4.784kB
+2023-07-25T21:47:27.553-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e3ebe1761852 Extracting [==================================================>]  4.784kB/4.784kB
+2023-07-25T21:47:27.557-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  e3ebe1761852 Pull complete 
+2023-07-25T21:47:27.566-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  postgres Pulled 
+2023-07-25T21:47:27.578-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Network spring-petclinic_default  Creating
+2023-07-25T21:47:27.608-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Network spring-petclinic_default  Created
+2023-07-25T21:47:27.609-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container spring-petclinic-postgres-1  Creating
+2023-07-25T21:47:27.737-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container spring-petclinic-postgres-1  Created
+2023-07-25T21:47:27.742-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container spring-petclinic-postgres-1  Starting
+2023-07-25T21:47:27.889-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container spring-petclinic-postgres-1  Started
+2023-07-25T21:47:27.890-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container spring-petclinic-postgres-1  Waiting
+2023-07-25T21:47:28.393-07:00  INFO 60024 --- [utReader-stderr] o.s.boot.docker.compose.core.DockerCli   :  Container spring-petclinic-postgres-1  Healthy
+2023-07-25T21:47:29.862-07:00  INFO 60024 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-25T21:47:29.868-07:00  INFO 60024 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 2 JPA repository interfaces.
+2023-07-25T21:47:29.902-07:00  INFO 60024 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2023-07-25T21:47:29.902-07:00  INFO 60024 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-25T21:47:29.902-07:00  INFO 60024 --- [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.10]
+2023-07-25T21:47:29.911-07:00  INFO 60024 --- [    Test worker] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2023-07-25T21:47:29.911-07:00  INFO 60024 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 160 ms
+2023-07-25T21:47:29.935-07:00  INFO 60024 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2023-07-25T21:47:30.014-07:00  INFO 60024 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@305db32d
+2023-07-25T21:47:30.014-07:00  INFO 60024 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2023-07-25T21:47:30.096-07:00  INFO 60024 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-25T21:47:30.098-07:00  INFO 60024 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-07-25T21:47:30.098-07:00  INFO 60024 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-07-25T21:47:30.118-07:00  INFO 60024 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-07-25T21:47:30.158-07:00  INFO 60024 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-25T21:47:30.158-07:00  INFO 60024 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-25T21:47:30.267-07:00  INFO 60024 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 13 endpoint(s) beneath base path '/actuator'
+2023-07-25T21:47:30.279-07:00  INFO 60024 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 60360 (http) with context path ''
+2023-07-25T21:47:30.282-07:00  INFO 60024 --- [    Test worker] o.s.s.p.PostgresIntegrationTests         : Started PostgresIntegrationTests in 21.913 seconds (process running for 49.672)
+2023-07-25T21:47:30.300-07:00  INFO 60024 --- [o-auto-3-exec-1] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-25T21:47:30.301-07:00  INFO 60024 --- [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-07-25T21:47:30.301-07:00  INFO 60024 --- [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

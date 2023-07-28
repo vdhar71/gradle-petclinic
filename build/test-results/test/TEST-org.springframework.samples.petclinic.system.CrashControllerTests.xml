@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.springframework.samples.petclinic.system.CrashControllerTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-07-26T04:47:32" hostname="dhar.lan" time="0.001">
+  <properties/>
+  <testcase name="testTriggerException()" classname="org.springframework.samples.petclinic.system.CrashControllerTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
