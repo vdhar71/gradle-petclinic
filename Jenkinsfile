@@ -20,7 +20,7 @@ pipeline {
                         sh '/usr/local/bin/docker login -u $username -p $password'
                 }
                 // Trivy scan before git checkout
-                sh '/opt/homebrew/bin/trivy repo https://github.com/vdhar71/petclinic.git --scanners vuln,secret,config,license --dependency-tree'
+                sh '/opt/homebrew/bin/trivy repo https://github.com/vdhar71/gradle-petclinic.git --scanners vuln,secret,config,license --dependency-tree'
                 
                 // Checkout spring-petclinic code from the GitHub repository
                 checkout scmGit(branches: [
@@ -28,7 +28,7 @@ pipeline {
                     ], 
                     extensions: [cleanBeforeCheckout(deleteUntrackedNestedRepositories: true)], 
                     userRemoteConfigs: [
-                        [url: 'https://github.com/vdhar71/petclinic']
+                        [url: 'https://github.com/vdhar71/gradle-petclinic']
                         ])
                         
                 // Exec JF & Gradle commands and build the app
@@ -61,6 +61,8 @@ pipeline {
                     
                     sh '/usr/local/bin/docker save -o gradle-petclinic.tar vdhar/gradle-petclinic:1.0'
                     jf 'rt u gradle-petclinic.tar repo-local/'
+
+                    sh '/usr/local/bin/docker push vdhar/gradle-petclinic:1.0'
                 }
             }
         }
