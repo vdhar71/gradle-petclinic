@@ -7,6 +7,8 @@ pipeline {
     environment {
         IMG_VER = 1
         dockerCredentials = 'dockerhub'
+	gitcreds = 'github'
+	GIT_URL = 'https://github.com/vdhar71/gradle-petclinic'
         PATH='/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin'
     }
 
@@ -16,6 +18,7 @@ pipeline {
 		// Login to Docker to enable trivy to download the DB.
 		sh 'echo $PATH'
                 sh 'env'
+		
                 // Docker login to use trivy
                 withCredentials([usernamePassword(credentialsId: dockerCredentials, passwordVariable: 'password', usernameVariable: 'username')]) {
                         sh '/usr/local/bin/docker login -u $username -p $password'
@@ -64,6 +67,63 @@ pipeline {
                     // jf 'rt u gradle-petclinic.tar repo-local/'
 
                     sh '/usr/local/bin/docker push vdhar/gradle-petclinic:${IMG_VER}.${BUILD_NUMBER}'
+
+		    // GitHub login to be able to push Kubernetes deployment manifests
+		    withCredentials([string(credentialsId: gitcreds, variable: 'GITHUB_TOKEN')]) {
+                    sh '''
+                        git config user.email "vidash@yahoo.com"
+                        git config user.name "Vidyadhar Chitradurga"
+                        mkdir k8s-argocd-manifests && cd k8s-argocd-manifests
+			
+			cat > deployment.yml << !
+   			apiVersion: apps/v1
+			kind: Deployment
+			metadata:
+  			  namespace: petclinic
+ 			  name: petclinic-app
+  			  labels:
+    			    app: petclinic-app
+			spec:
+  			  replicas: 2
+  			    selector:
+    			      matchLabels:
+      				app: petclinic-app
+  			  template:
+    			    metadata:
+      			      labels:
+        			app: petclinic-app
+    			    spec:
+      			      containers:
+                              - name: petclinic-app
+                                image: vdhar/gradle-petclinic:${IMG_VER}.${BUILD_NUMBER}
+                                ports:
+                                - containerPort: 8080
+			!
+
+   			cat > service.yml << !
+      			apiVersion: v1
+			kind: Service
+			metadata:
+  			  namespace: petclinic
+  			  name: springboot-petclinic-service
+			spec:
+  			  type: NodePort
+  			  ports:
+  			  - name: http
+    			    nodePort: 30080
+    			    port: 80
+    			    targetPort: 8080
+                            protocol: TCP
+  			  selector:
+    			    app: petclinic-app
+	   		!
+      
+                        
+                        git add k8s-argocd-manifests/.
+                        git commit -m "Update deployment image to version ${BUILD_NUMBER}"
+                        git push https://${GITHUB_TOKEN}@github.com/${GIT_URL} HEAD:main
+                       '''
+                    }
                 }
             }
         }
