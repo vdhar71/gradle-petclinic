@@ -76,9 +76,10 @@ pipeline {
                         git config user.email "vidash@yahoo.com"
                         git config user.name "Vidyadhar Chitradurga"
 			// Delete previous deployments
-   			kubectl delete deployment/petclinic && kubectl delete deployment/petclinicreplaceme
-                        kubectl create deployment petclinic --image=vdhar/gradle-petclinic:${IMG_VER}.${BUILD_NUMBER} -o yaml > k8s-argocd-manifests/deployment.yml
-			
+   			// kubectl delete deployment/petclinic && kubectl delete deployment/petclinicreplaceme
+                        // kubectl create deployment petclinic --image=vdhar/gradle-petclinic:${IMG_VER}.${BUILD_NUMBER} -o yaml > k8s-argocd-manifests/deployment.yml
+
+   			sed -r -i "s/replaceImageTag/${IMG_VER}.${BUILD_NUMBER}/g" k8s-argocd-manifests/deployment.yml
 			git add k8s-argocd-manifests/deployment.yml
                         git commit -m "Update deployment image to version ${IMG_VER}.${BUILD_NUMBER}"
 			git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
