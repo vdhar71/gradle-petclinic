@@ -119,9 +119,9 @@ pipeline {
 	   		!
       
                         
-                        git add k8s-argocd-manifests/.
+                        git add .
                         git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                        git push https://${GITHUB_TOKEN}@github.com/${GIT_URL} HEAD:main
+                        git push ${GIT_URL} HEAD:main
                        '''
                     }
                 }
