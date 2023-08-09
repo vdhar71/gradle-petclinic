@@ -69,7 +69,7 @@ pipeline {
                     sh '/usr/local/bin/docker push vdhar/gradle-petclinic:${IMG_VER}.${BUILD_NUMBER}'
 
 		    // GitHub login to be able to push Kubernetes deployment manifests
-		    withCredentials([string(credentialsId: gitcreds, variable: 'GITHUB_TOKEN')]) {
+		    withCredentials([usernamePassword(credentialsId: gitcreds, passwordVariable: 'password', usernameVariable: 'username')]) {
                     sh '''
                         git config user.email "vidash@yahoo.com"
                         git config user.name "Vidyadhar Chitradurga"
