@@ -7,6 +7,8 @@ pipeline {
     environment {
         IMG_VER = 1
         dockerCredentials = 'dockerhub'
+	GIT_REPO_NAME = 'gradle-petclinic'
+	GIT_USER_NAME = 'vdhar71'
 	gitcreds = 'github'
 	GIT_URL = 'https://github.com/vdhar71/gradle-petclinic'
         PATH='/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin'
@@ -72,56 +74,12 @@ pipeline {
 		    withCredentials([usernamePassword(credentialsId: gitcreds, passwordVariable: 'password', usernameVariable: 'username')]) {
                     sh '''
                         git config user.email "vidash@yahoo.com"
-                        git config user.name "Vidyadhar Chitradurga"
-                        mkdir k8s-argocd-manifests && cd k8s-argocd-manifests
-			
-			cat > deployment.yml << !
-   			apiVersion: apps/v1
-			kind: Deployment
-			metadata:
-  			  namespace: petclinic
- 			  name: petclinic-app
-  			  labels:
-    			    app: petclinic-app
-			spec:
-  			  replicas: 2
-  			    selector:
-    			      matchLabels:
-      				app: petclinic-app
-  			  template:
-    			    metadata:
-      			      labels:
-        			app: petclinic-app
-    			    spec:
-      			      containers:
-                              - name: petclinic-app
-                                image: vdhar/gradle-petclinic:${IMG_VER}.${BUILD_NUMBER}
-                                ports:
-                                - containerPort: 8080
-			!
-
-   			cat > service.yml << !
-      			apiVersion: v1
-			kind: Service
-			metadata:
-  			  namespace: petclinic
-  			  name: springboot-petclinic-service
-			spec:
-  			  type: NodePort
-  			  ports:
-  			  - name: http
-    			    nodePort: 30080
-    			    port: 80
-    			    targetPort: 8080
-                            protocol: TCP
-  			  selector:
-    			    app: petclinic-app
-	   		!
-      
-                        
-                        git add .
+                        git config user.name "Vidyadhar Chitradurga"        			
+                        sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" k8s-argocd-manifests/deployment.yml
+			git add k8s-argocd-manifests/deployment.yml
                         git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                        git push ${GIT_URL} HEAD:main
+			git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                        
                        '''
                     }
                 }
