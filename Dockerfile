@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM openjdk:22
 
 ENV APP_HOME=/usr/app/
 WORKDIR $APP_HOME
