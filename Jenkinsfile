@@ -1,8 +1,13 @@
 pipeline {
-    agent any
-    tools {
-        jfrog 'jfrog-cli'
+    agent {
+        docker {
+            image 'abhishekf5/maven-abhishek-docker-agent:v1'
+            args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+        }
     }
+    // tools {
+    //     jfrog 'jfrog-cli'
+    // }
  
     environment {
         dockerCredentials = 'dockerhub'
@@ -32,8 +37,8 @@ pipeline {
                         ])
                         
                 // Exec JF & Gradle commands and build the app
-                jf '-v'
-                jf 'c show'
+                // jf '-v'
+                // jf 'c show'
                 // Check whether dependencies are pulled from JFrog Artifactory
                 sh './gradlew dependencies'
                 // Build petclinic app
@@ -43,7 +48,7 @@ pipeline {
                 sh '/opt/homebrew/bin/trivy fs . --scanners vuln,secret,config,license --dependency-tree'
                 
                 // Publish the build info.
-                jf 'rt bp'
+                // jf 'rt bp'
 
                 
             }
@@ -59,8 +64,8 @@ pipeline {
                     // Trivy scan on the final artifact: Docker image
                     sh '/opt/homebrew/bin/trivy image vdhar/gradle-petclinic:1.0 --scanners vuln,secret,config,license --dependency-tree'
                     
-                    sh '/usr/local/bin/docker save -o gradle-petclinic.tar vdhar/gradle-petclinic:1.0'
-                    jf 'rt u gradle-petclinic.tar repo-local/'
+                    // sh '/usr/local/bin/docker save -o gradle-petclinic.tar vdhar/gradle-petclinic:1.0'
+                    // jf 'rt u gradle-petclinic.tar repo-local/'
 
                     sh '/usr/local/bin/docker push vdhar/gradle-petclinic:1.0'
                 }
