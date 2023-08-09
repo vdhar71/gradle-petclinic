@@ -1,42 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: "2023-08-09T07:11:34Z"
-  generation: 1
+  namespace: petclinic
+  name: petclinic-app
   labels:
-    app: petclinic
-  name: petclinic
-  namespace: default
-  resourceVersion: "664609"
-  uid: 1a3b1072-7af5-4aef-9669-9c998389f3c5
+    app: petclinic-app
 spec:
-  progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: petclinic
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+      app: petclinic-app
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: petclinic
+        app: petclinic-app
     spec:
       containers:
-      - image: vdhar/gradle-petclinic:1.13
-        imagePullPolicy: IfNotPresent
-        name: gradle-petclinic
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
-status: {}
+      - name: petclinic-app
+        image: vdhar/gradle-petclinic:replaceImgTag
+        ports:
+        - containerPort: 8080
