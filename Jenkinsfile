@@ -79,7 +79,7 @@ pipeline {
 			git add k8s-argocd-manifests/deployment.yml
                         git commit -m "Update deployment image to version ${IMG_VER}.${BUILD_NUMBER}"
 			git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
-                        
+                        trivy k8s deployment/petclinic
                        '''
                     }
                 }
