@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: petclinic
+  name: petclinic-app
+  labels:
+    app: petclinic-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: petclinic-app
+  template:
+    metadata:
+      labels:
+        app: petclinic-app
+    spec:
+      containers:
+      - name: petclinic-app
+        image: vdhar/gradle-petclinic:replaceImageTag
+        ports:
+        - containerPort: 8080
