@@ -49,9 +49,7 @@ pipeline {
                 sh '/opt/homebrew/bin/trivy fs . --scanners vuln,secret,config,license --dependency-tree'
                 
                 // Publish the build info.
-                // jf 'rt bp'
-
-                
+                // jf 'rt bp' 
             }
 
             post {
@@ -70,20 +68,6 @@ pipeline {
 
                     sh '/usr/local/bin/docker push vdhar/gradle-petclinic:${IMG_VER}.${BUILD_NUMBER}'
 
-		    // GitHub login to be able to push Kubernetes deployment manifests
-		    withCredentials([usernamePassword(credentialsId: gitcreds, passwordVariable: 'password', usernameVariable: 'username')]) {
-                    sh '''
-                        git config user.email "vidash@yahoo.com"
-                        git config user.name "Vidyadhar Chitradurga"
-
-   			sed 's/replaceImageTag/${IMG_VER}.${BUILD_NUMBER}/g' k8s-argocd-manifests/deployment.yml > k8s-argocd-manifests/tmp.yml
-      			mv k8s-argocd-manifests/tmp.yml k8s-argocd-manifests/deployment.yml
-			git add k8s-argocd-manifests/deployment.yml
-                        git commit -m "Update deployment image to version ${IMG_VER}.${BUILD_NUMBER}"
-			git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
-                        /opt/homebrew/bin/trivy k8s deployment/petclinic --scanners vuln,secret,config,license --dependency-tree
-                       '''
-                    }
                 }
             }
         }
