@@ -10,6 +10,7 @@ pipeline {
     // }
  
     environment {
+        IMG_VER = 1
         dockerCredentials = 'dockerhub'
         PATH='/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin'
     }
@@ -59,15 +60,15 @@ pipeline {
                 success {
                     archiveArtifacts 'build/libs//*.jar'
                     // Build the Docker image from the resulting jar
-                    sh '/usr/local/bin/docker build -t vdhar/gradle-petclinic:1.0 .'
+                    sh '/usr/local/bin/docker build -t vdhar/gradle-petclinic:${IMG_VER}.${BUILD_NUMBER} .'
                     
                     // Trivy scan on the final artifact: Docker image
-                    sh '/opt/homebrew/bin/trivy image vdhar/gradle-petclinic:1.0 --scanners vuln,secret,config,license --dependency-tree'
+                    sh '/opt/homebrew/bin/trivy image vdhar/gradle-petclinic:${IMG_VER}.${BUILD_NUMBER} --scanners vuln,secret,config,license --dependency-tree'
                     
-                    // sh '/usr/local/bin/docker save -o gradle-petclinic.tar vdhar/gradle-petclinic:1.0'
+                    // sh '/usr/local/bin/docker save -o gradle-petclinic.tar vdhar/gradle-petclinic:${IMG_VER}.${BUILD_NUMBER}'
                     // jf 'rt u gradle-petclinic.tar repo-local/'
 
-                    sh '/usr/local/bin/docker push vdhar/gradle-petclinic:1.0'
+                    sh '/usr/local/bin/docker push vdhar/gradle-petclinic:${IMG_VER}.${BUILD_NUMBER}'
                 }
             }
         }
